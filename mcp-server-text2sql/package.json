@@ -1,0 +1,24 @@
+{
+  "name": "mcp-lab-text2sql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "test": "npx @modelcontextprotocol/inspector ts-node src/index.ts",
+    "init:db": "node db/initDb.js"
+  },
+  "author": "rperezll",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.9.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

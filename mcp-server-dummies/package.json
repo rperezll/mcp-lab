@@ -1,0 +1,22 @@
+{
+  "name": "mcp-lab-dummies",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "test": "npx @modelcontextprotocol/inspector ts-node src/index.ts"
+  },
+  "author": "rperezll",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.9.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
