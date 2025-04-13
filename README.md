@@ -68,6 +68,36 @@ npm run test
 
 El comando nos expone el inspector en [http://localhost:6274](http://localhost:6274) asociado a nuestro servidor MCP.
 
+## Claude Desktop
+
+Podemos probar nuestros servidores MCP desde [**Claude Desktop**](https://claude.ai/download). Para asociar nuestros servidores MCP debemos modificar el archivo `claude_desktop_config.json` de la siguiente manera:
+
+```json
+{
+    "mcpServers": {
+        "mcp-lab-dummies": {
+            "command": "node",
+            "args": [
+                "C://PATH//mcp-lab//mcp-server-dummies//dist//index.js"
+            ]
+        },
+        "mcp-lab-text2sql": {
+            "command": "node",
+            "args": [
+                "C://PATH//mcp-lab//mcp-server-text2sql//dist//index.js"
+            ]
+        }
+    }
+}
+```
+
+> [!IMPORTANT] 
+> Recuerda ejecutar `npm ru build` dentro de cada proyecto previamente.
+
+¿Dónde se encuentra `claude_desktop_config.json` en Windows? ➡️ `PATH//AppData//Roaming//Claude`.
+
+Para conocer más sobre la sintaxis y ubicación de este archivo de configuración usa la [documentación oficial](https://modelcontextprotocol.io/quickstart/user).
+
 ## 📄 Licencia
 
 **MIT © [rperezll](https://github.com/rperezll)**
