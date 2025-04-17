@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { getDb } from "./db";
 import { z } from "zod";
 
-export const ToolsSet = (server: McpServer) => {
+export const ToolsSet = async (server: McpServer) => {
   server.tool("query", { sql: z.string() }, async ({ sql }) => {
     const db = getDb();
     try {

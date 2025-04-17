@@ -4,8 +4,8 @@ import {
 import { updateFitnessGoalByUser } from "./utils/users";
 import { UserSchema } from "./utils/fake-db";
 
-export const ToolsSet = (server: McpServer) => {
-  server.tool("update-user-goal", { user: UserSchema }, async ({ user }) => {
+export const ToolsSet = async (server: McpServer) => {
+  server.tool("update-user-goal", "Actualiza el objetivo de un usuario", { user: UserSchema }, async ({ user }) => {
     const updatedUser = await updateFitnessGoalByUser(user);
 
     if (updatedUser.success) {

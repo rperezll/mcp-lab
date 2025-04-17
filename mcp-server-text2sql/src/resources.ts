@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { getDb } from "./db";
 
-export const ResourcesSet = (server: McpServer) => {
+export const ResourcesSet = async (server: McpServer) => {
   server.resource("schema", "schema://main", async (uri) => {
     const db = await getDb();
     try {

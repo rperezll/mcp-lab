@@ -8,10 +8,10 @@ const inputData = {
   subscribedPlan: z.enum(["Basic", "Full", "Premium"]),
   age: z
     .string()
-    .regex(/^(?:[0-9]|[1-9][0-9])$/, "La edad debe ser un número entre 0 y 99"),
+    .regex(/^(?:[0-9]|[1-9][0-9])$/, "La edad debe ser un número entre 0 y 99 en formato string"),
 };
 
-export const PromptsSet = (server: McpServer) => {
+export const PromptsSet = async (server: McpServer) => {
   server.prompt(
     "generate-training-plan",
     inputData,

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const UserSchema = z.object({
   name: z.string(),
-  age: z.number().int().min(0).optional(),
+  age: z.number().int().optional(),
   subscribedPlan: z.enum(["Basic", "Full", "Premium"]).optional(),
   hasPaid: z.boolean().optional(),
   fitnessGoal: z.string().optional(),

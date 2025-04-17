@@ -92,7 +92,7 @@ Podemos probar nuestros servidores MCP desde [**Claude Desktop**](https://claude
 ```
 
 > [!IMPORTANT] 
-> Recuerda ejecutar `npm ru build` dentro de cada proyecto previamente.
+> Recuerda ejecutar `npm run build` dentro de cada proyecto previamente.
 
 ¿Dónde se encuentra `claude_desktop_config.json` en Windows? ➡️ `PATH//AppData//Roaming//Claude`.
 

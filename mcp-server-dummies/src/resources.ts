@@ -5,7 +5,7 @@ import {
 import { findAllUsersName, findUsersByName } from "./utils/users";
 import { getWeatherByCity } from "./utils/weather";
 
-export const ResourcesSet = (server: McpServer) => {
+export const ResourcesSet = async (server: McpServer) => {
   server.resource(
     "fetch-weather",
     new ResourceTemplate("weather://city/{cityName}", { list: undefined }),
