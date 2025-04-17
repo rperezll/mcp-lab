@@ -3,7 +3,7 @@ import OpenAI from "openai";
 
 /**
  * Esto hay que usarlo con mucho cuidado, ya que OpenAI no soporta todos los tipos de JSON Schema.
- * El tipo Tool de MCP ahorra mismo es compatible con OpenAI, por lo que el fin es proporcionar un parseador (normalizar).
+ * El tipo Tool de MCP no es compatible con OpenAI, por lo que el fin es proporcionar un parseador (normalizar).
  * Por el momento, existen muchos campos puestos ad hoc, por lo que no es una solución definitiva.
  */
 export const normalizeToolsForOpenAI = (
