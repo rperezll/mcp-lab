@@ -8,6 +8,7 @@ Este repositorio es un laboratorio personal donde he estado trasteando con el SD
 .
 ├── 📂 mcp-server-dummies/   # Primeros pasos usando el SDK de MCP.
 ├── 📂 mcp-lab-text2sql/     # Caso de uso avanzado: Text-to-SQL sobre una base de datos SQLite.
+├── 📂 mcp-client/           # Integración con OpenAI API para su integración con un Server MCP.
 ```
 
 ## 🧪 mcp-server-dummies
@@ -102,7 +103,7 @@ Para conocer más sobre la sintaxis y ubicación de este archivo de configuraci�
 
 Usar servidores MCP con OpenAI funciona bien cuando se trata de Tools. Pero si lo que queremos es consumir Recursos, todo se vuelve más complejo.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Ojo: se pueden usar servidores MCP de forma nativa con el SDK de agentes de OpenAI, aunque por ahora ese SDK solo está disponible en Python. En mi caso, las pruebas las estoy haciendo con el SDK de OpenAI para TypeScript, usando la Responses API.
 
 Vale... tengo mi servidor MCP que expone varias Tools usables desde Claude Desktop. Hasta ahí todo perfecto. Pero ahora me pregunto: ¿puedo usar ese mismo servidor MCP en un agente que funciona con la API de OpenAI?
@@ -115,7 +116,7 @@ En primera instancia usar modelos GPT y conectarlos a nuestro MCP Server no es c
 Tipo devuelto por la función **getTools()** de nuestro Cliente MCP:
 
 ```ts
-import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { Tool } from "@modelcontextprotocol/sdk/types.js";
 
 const mcpTool: Tool = {
   name: "getUser",
@@ -129,7 +130,7 @@ const mcpTool: Tool = {
 }
 ```
 
-Tipo que espera la **Response API de OpenAI** para trabajar con tools:
+Tipo que espera la **Responses API de OpenAI** para trabajar con tools:
 
 [Documentación OpenAI](https://platform.openai.com/docs/guides/function-calling?api-mode=responses)
 
@@ -174,6 +175,9 @@ BadRequestError: 400 Invalid schema for function 'update-user-goal': In context=
 ```
 
 ### Demo *test*
+
+> [!NOTE] 
+> El proyecto requiere una versión de Node.js >= v20.
 
 Ejecuta la demo con un Agente LLM usando OpenAI.
 
