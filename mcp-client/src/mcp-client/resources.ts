@@ -1,6 +1,6 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { Resource, ResourceTemplate } from "@modelcontextprotocol/sdk/types.js";
 
-export const getResources = async (client: Client) => {
-    const result = await client.listResources();
-    return JSON.stringify(result, null, 2);
+export const getResourcesDefinition = async (client: Client): Promise<ResourceTemplate[]> => {
+    return (await client.listResourceTemplates()).resourceTemplates;
 };

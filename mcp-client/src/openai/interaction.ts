@@ -1,29 +1,25 @@
 import OpenAI from "openai";
-import dotenv from "dotenv";
-import { Tool } from "@modelcontextprotocol/sdk/types.js";
-import { normalizeToolsForOpenAI } from "./utils";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
-dotenv.config();
+import * as p from "@clack/prompts";
+
+export const messages: OpenAI.Responses.ResponseInput = [];
 
 export const interaction = async (
-  message: string,
+  openaiClient: OpenAI,
   mcpClient: Client,
-  tools?: Tool[]
+  message: string,
+  tools: OpenAI.Responses.Tool[]
 ) => {
-  const client = new OpenAI({
-    apiKey: process.env["OPENAI_API_KEY"],
-  });
+  const spinner = p.spinner();
+  spinner.start("Respondiendo");
 
-  const openaiTools = normalizeToolsForOpenAI(tools ?? []);
-
-  const messages: OpenAI.Responses.ResponseInput = [];
   messages.push({ role: "user", content: message });
 
-  let response = await client.responses.create({
+  let response = await openaiClient.responses.create({
     model: "gpt-3.5-turbo",
-    tools: openaiTools,
+    tools,
     input: messages,
-    temperature: 0,
+    temperature: 0.3,
     max_output_tokens: 100,
     tool_choice: "auto",
   });
@@ -47,10 +43,10 @@ export const interaction = async (
       output: JSON.stringify(mcpResponse),
     });
 
-    const response2 = await client.responses.create({
+    const response2 = await openaiClient.responses.create({
       model: "gpt-3.5-turbo",
       input: messages,
-      temperature: 0,
+      temperature: 0.3,
       max_output_tokens: 100,
       tool_choice: "none",
     });
@@ -63,5 +59,5 @@ export const interaction = async (
     response = response2;
   }
 
-  console.log(`OpenAI response: ${response.output_text}`);
+  spinner.stop(`AI: ${response.output_text}`);
 };

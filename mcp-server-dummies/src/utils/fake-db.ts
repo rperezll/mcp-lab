@@ -2,10 +2,10 @@ import { z } from "zod";
 
 export const UserSchema = z.object({
   name: z.string(),
-  age: z.number().int().optional(),
-  subscribedPlan: z.enum(["Basic", "Full", "Premium"]).optional(),
-  hasPaid: z.boolean().optional(),
-  fitnessGoal: z.string().optional(),
+  age: z.number().int().nullable(),
+  subscribedPlan: z.enum(["Basic", "Full", "Premium"]).nullable(),
+  hasPaid: z.boolean().nullable(),
+  fitnessGoal: z.string().nullable(),
 });
 
 export type User = z.infer<typeof UserSchema>;
